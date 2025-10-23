@@ -685,6 +685,715 @@ correct
   * `e[::-1]` → 文字列を**逆順**にする
 
 ---
+## バックスラッシュを出力します:
+
+## 🧩 Exercise: Raw String（生文字列）
+
+### 🎯 課題
+
+次のコードを実行して、**バックスラッシュ（\）をそのまま出力**するようにします。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+print(r"\\")
+```
+
+---
+
+### 🧾 解説
+
+* 通常、Python の文字列内では `\`（バックスラッシュ）は **エスケープシーケンス** の始まりを意味します。
+  たとえば：
+
+  * `\n` → 改行
+  * `\t` → タブ
+
+* そのため、普通の文字列 `"\\\\"` と書いた場合、
+  実際の出力は `\\`（バックスラッシュ2つ）になります。
+
+* しかし、**生文字列（raw string）** を使うと、
+  Python は `\` を特別扱いせず、**そのままの文字として出力**します。
+
+  そのため、`r"\\”` のように `r` を前に付けると：
+
+  ```python
+  print(r"\\")
+  ```
+
+  出力結果は次のようになります👇
+
+  ```
+  \\
+  ```
+
+---
+
+### 💡 ポイント
+
+* 文字列の前に `r` または `R` を付けると、「raw（生）文字列」として扱われます。
+* 正規表現（`re` モジュール）などで多用されます。
+* エスケープ処理を避けたいときに便利です。
+
+---
+
+✅ **まとめ**
+
+* `r"\\”` → バックスラッシュ2つをそのまま出力。
+* `r` は「raw string（生文字列）」を意味し、エスケープを無効化します。
+
+---
+## 変数 f を大文字に変換します。
+
+## 🔤 Exercise: Convert String to Uppercase（文字列を大文字に変換）
+
+### 🎯 課題
+
+次のコードで、変数 `f` に代入された文字列 `"You are wrong"` を **すべて大文字に変換**します。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+f = "You are wrong"
+print(f.upper())
+```
+
+---
+
+### 🧾 解説
+
+* Python の文字列には、**組み込みメソッド** `.upper()` があります。
+  これを使うと、文字列中のすべての英字が **大文字（Uppercase）** に変換されます。
+
+* このコードでは：
+
+  ```python
+  f = "You are wrong"
+  print(f.upper())
+  ```
+
+  実行結果は以下のようになります👇
+
+  ```
+  YOU ARE WRONG
+  ```
+
+---
+
+### 💡 ポイント
+
+| メソッド       | 説明           | 例                                             |
+| ---------- | ------------ | --------------------------------------------- |
+| `.upper()` | すべて大文字に変換    | `"abc".upper()` → `"ABC"`                     |
+| `.lower()` | すべて小文字に変換    | `"ABC".lower()` → `"abc"`                     |
+| `.title()` | 単語の先頭を大文字に変換 | `"you are wrong".title()` → `"You Are Wrong"` |
+
+---
+
+✅ **まとめ**
+
+* `.upper()` は文字列をすべて **大文字** に変換するメソッド。
+* 元の文字列 `f` 自体は変更されず、変換結果が新しい文字列として返されます。
+---
+
+## 変数 f2 を小文字に変換します。
+
+## 🔤 Exercise: Convert String to Lowercase（文字列を小文字に変換）
+
+### 🎯 課題
+
+次のコードで、変数 `f2` に代入された文字列 `"YOU ARE RIGHT"` を **すべて小文字に変換**します。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+f2 = "YOU ARE RIGHT"
+print(f2.lower())
+```
+
+---
+
+### 🧾 解説
+
+* Python の文字列には **`.lower()`** というメソッドがあります。
+  これを使うと、文字列中のすべての英字を **小文字（lowercase）** に変換できます。
+
+* このコードでは：
+
+  ```python
+  f2 = "YOU ARE RIGHT"
+  print(f2.lower())
+  ```
+
+  実行結果は以下のようになります👇
+
+  ```
+  you are right
+  ```
+
+---
+
+### 💡 ポイント
+
+| メソッド            | 説明             | 例                                    |
+| --------------- | -------------- | ------------------------------------ |
+| `.lower()`      | すべて小文字に変換      | `"HELLO".lower()` → `"hello"`        |
+| `.upper()`      | すべて大文字に変換      | `"hello".upper()" → `"HELLO"`        |
+| `.capitalize()` | 先頭の1文字だけ大文字に変換 | `"python".capitalize()" → `"Python"` |
+
+---
+
+✅ **まとめ**
+
+* `.lower()` は文字列をすべて **小文字** に変換するメソッド。
+* 元の文字列 `f2` はそのままで、変換後の文字列が新しく生成されます。
+
+---
+## 変数gを考え、部分文字列snowの最初のインデックスを見つける。
+
+## 🔍 Exercise: Find the Index of a Substring（部分文字列のインデックスを検索）
+
+### 🎯 課題
+
+変数 `g` に格納された長い文字列の中から、部分文字列 **"snow"** が最初に現れる **インデックス位置（数値）** を見つけます。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+g = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb \
+Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go"
+
+# 部分文字列 "snow" の最初のインデックスを検索
+index = g.find("snow")
+print(index)
+```
+
+---
+
+### 🧾 解説
+
+* **`.find()` メソッド** は、指定した部分文字列が最初に現れる位置（インデックス）を返します。
+* 文字列中で見つからない場合は **`-1`** を返します。
+
+このコードでは：
+
+```python
+index = g.find("snow")
+```
+
+が `"snow"` の最初の出現位置を検索し、そのインデックスを `index` に格納します。
+
+---
+
+### 🧩 実行結果（例）
+
+```
+95
+```
+
+これは、文字列 `g` の中で `"snow"` が **95番目の位置から始まる** ことを意味します。
+
+---
+
+### 💡 ポイント
+
+| メソッド                | 説明                           | 例                                    | 結果   |
+| ------------------- | ---------------------------- | ------------------------------------ | ---- |
+| `.find(substring)`  | 部分文字列の最初の位置を返す               | `"Hello world".find("world")`        | `6`  |
+| `.rfind(substring)` | 最後に出現する位置を返す                 | `"Hello world world".rfind("world")` | `12` |
+| `.index(substring)` | `.find()`と同様だが、見つからないとエラーになる | `"abc".index("a")`                   | `0`  |
+
+---
+
+✅ **まとめ**
+
+* `.find()` を使うと、文字列内で特定の語句が現れる位置を簡単に特定できる。
+* この例では `"snow"` が文字列中の **95番目** に現れることを確認できます。
+---
+
+## 変数 g で、部分文字列 Mary を Bob に置き換えます。
+
+## 🔄 Exercise: Replace a Substring in a String（部分文字列の置き換え）
+
+### 🎯 課題
+
+変数 `g` に含まれるすべての **"Mary"** を **"Bob"** に置き換えましょう。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+g = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb \
+Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go"
+
+# "Mary" を "Bob" に置き換える
+new_g = g.replace("Mary", "Bob")
+
+print(new_g)
+```
+
+---
+
+### 🧾 解説
+
+* `.replace(old, new)` メソッドは、文字列の中の指定した部分文字列（`old`）を、別の文字列（`new`）に置き換えます。
+* 元の文字列 `g` は **不変（immutable）** のため、置き換えの結果は新しい文字列として返されます。
+  → そのため、結果を新しい変数 `new_g` に代入しています。
+
+---
+
+### 🧩 実行結果（例）
+
+```
+Bob had a little lamb Little lamb, little lamb Bob had a little lamb 
+Its fleece was white as snow And everywhere that Bob went Bob went, Bob went 
+Everywhere that Bob went The lamb was sure to go
+```
+
+---
+
+### 💡 ポイント
+
+| メソッド                     | 説明                  | 例                                     | 結果            |
+| ------------------------ | ------------------- | ------------------------------------- | ------------- |
+| `.replace("old", "new")` | 指定した文字列を別の文字列に置き換える | `"Hello Mary".replace("Mary", "Bob")` | `"Hello Bob"` |
+
+---
+
+✅ **まとめ**
+
+* `.replace()` は文字列の置換に使用される便利なメソッドです。
+* このコードでは、元の童謡の登場人物 **"Mary"** をすべて **"Bob"** に変え、新しい文字列を作成しています。
+---
+
+## 変数 g で、部分文字列 , を . に置き換えます。
+
+## 🔄 Exercise: Replace Commas with Periods（カンマをドットに置き換える）
+
+### 🎯 課題
+
+変数 `g` に含まれる **`,`（カンマ）** を、すべて **`.`（ピリオド）** に置き換えましょう。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+g = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb \
+Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go"
+
+# カンマ (,) をドット (.) に置き換える
+new_g = g.replace(",", ".")
+
+print(new_g)
+```
+
+---
+
+### 🧾 解説
+
+* `.replace(old, new)` メソッドは、文字列の中の特定の部分文字列を別の文字列に置き換えるための関数です。
+* この場合、**すべての「,」を「.」に変換**します。
+* Python の文字列は **不変（immutable）** なので、置き換え後の新しい文字列を `new_g` に代入しています。
+
+---
+
+### 🧩 実行結果（例）
+
+```
+Mary had a little lamb Little lamb. little lamb Mary had a little lamb 
+Its fleece was white as snow And everywhere that Mary went Mary went. Mary went 
+Everywhere that Mary went The lamb was sure to go
+```
+
+---
+
+### 💡 ポイント
+
+| メソッド                 | 説明                  | 例                                   | 結果                |
+| -------------------- | ------------------- | ----------------------------------- | ----------------- |
+| `.replace(",", ".")` | 文字列中のカンマをピリオドに置き換える | `"Hello, World,".replace(",", ".")` | `"Hello. World."` |
+
+---
+
+✅ **まとめ**
+
+* `.replace()` は文字列操作で頻繁に使われる基本メソッド。
+* 今回は文章中の句読点を変更し、より自然な英文スタイルに整えました。
+---
+
+## 変数 g で、部分文字列をリストに分割します。
+
+## 🧩 Exercise: Split a String into a List（文字列をリストに分割する）
+
+### 🎯 課題
+
+変数 `g` に格納された長い文章を、**単語ごとに分割してリスト化**しましょう。
+
+---
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+g = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb \
+Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go"
+
+# 文字列をスペースで分割してリストに変換
+g_list = g.split()
+
+print(g_list)
+```
+
+---
+
+### 🧾 解説
+
+* `.split()` メソッドは、**文字列を指定した区切り文字（デリミタ）で分割**し、リスト（list）として返します。
+* 区切り文字を指定しない場合、デフォルトで **空白（スペース）** が使用されます。
+* 各単語がリストの要素として格納されます。
+
+---
+
+### 🧩 実行結果（例）
+
+```
+['Mary', 'had', 'a', 'little', 'lamb', 'Little', 'lamb,', 'little', 'lamb',
+ 'Mary', 'had', 'a', 'little', 'lamb', 'Its', 'fleece', 'was', 'white', 'as',
+ 'snow', 'And', 'everywhere', 'that', 'Mary', 'went', 'Mary', 'went,',
+ 'Mary', 'went', 'Everywhere', 'that', 'Mary', 'went', 'The', 'lamb', 'was',
+ 'sure', 'to', 'go']
+```
+
+---
+
+### 💡 ポイント
+
+| メソッド          | 説明                | 例                       | 結果                   |
+| ------------- | ----------------- | ----------------------- | -------------------- |
+| `.split()`    | スペースで文字列を分割してリスト化 | `"Hello world".split()` | `['Hello', 'world']` |
+| `.split(",")` | カンマで文字列を分割        | `"a,b,c".split(",")`    | `['a', 'b', 'c']`    |
+
+---
+
+✅ **まとめ**
+
+* `.split()` は文章やデータを扱う際の基本的な文字列操作。
+* この操作で、テキストを**単語リストとして解析・処理**しやすくなります。
+---
+
+## 文字列 s3 で、\d と search() 関数を使用して数字が存在するかどうかを確認します。
+
+## 🔍 Exercise: Check if a String Contains Numbers
+
+**（文字列に数字が含まれているか確認する）**
+
+### 💻 コード
+
+```python
+# Write your code below and press Shift+Enter to execute
+
+import re  # 正規表現モジュールをインポート
+
+s3 = "House number- 1105"
+
+# \d は「数字（0〜9）」を表す正規表現パターン
+result = re.search(r"\d", s3)
+
+# 数字が見つかったかどうかを判定
+if result:
+    print("The string contains a number.")
+else:
+    print("No numbers found in the string.")
+```
+
+---
+
+### 🧾 解説
+
+* **`re.search()`**
+  → 文字列全体を検索し、最初にマッチした部分を返します。
+  見つからない場合は `None` を返します。
+
+* **`\d`**
+  → 数字（0〜9）のいずれか1文字にマッチします。
+  つまり、「この文字列に数字が含まれているか？」を確認できます。
+
+* **変数 `result`**
+  → 一致が見つかればその情報（マッチオブジェクト）を格納します。
+  → 一致しなければ `None` になります。
+
+---
+
+### 🧩 実行結果の例
+
+```
+The string contains a number.
+```
+
+（文字列 `"House number- 1105"` の中には数字が含まれているため）
+
+---
+
+### 💡 まとめ
+
+| 関数             | 役割              |
+| -------------- | --------------- |
+| `re.search()`  | 最初に一致した部分を返す    |
+| `re.findall()` | すべての一致をリストで返す   |
+| `\d`           | 数字（digit）にマッチする |
+| `\D`           | 数字以外にマッチする      |
+
+✅ **このコードで学べるポイント**
+
+* 正規表現の基本構文（`\d` の使い方）
+* `re.search()` による文字列検索
+* 検索結果を `if` 文で判定する方法
+
+---
+
+Python の文字列の前につける r は、
+
+「raw（ロー）文字列」 を意味します。
+
+### 🔹 `r` とは何か？
+
+`r` を文字列の前につけると、
+**「バックスラッシュ（\）」を特別な意味として解釈しない** という指定になります。
+
+---
+
+### 🔸 通常の文字列の場合
+
+```python
+print("\n")
+```
+
+これは **「改行」** を意味します。
+Python は `\n` を「改行文字」として解釈してしまいます。
+
+---
+
+### 🔸 raw 文字列（r文字列）の場合
+
+```python
+print(r"\n")
+```
+
+これは **そのまま** 「`\n`」 と出力します。
+Python は `\` を特別扱いせず、「文字」として扱います。
+
+---
+
+### 🔹 なぜ正規表現では `r` を使うのか？
+
+正規表現では、`\d`, `\s`, `\w` など、
+**バックスラッシュを多用** します。
+
+もし `r` をつけないと、Python がそれらを文字列内で**別の意味（改行やタブなど）**として解釈してしまう可能性があります。
+
+---
+
+### ✅ 例で比較してみましょう
+
+```python
+import re
+s = "Room 1105"
+
+# rをつけない場合（非推奨）
+pattern = "\\d"   # バックスラッシュを2回書かないとエラー
+print(re.search(pattern, s))
+
+# rをつける場合（推奨）
+pattern = r"\d"   # そのまま1回でOK！
+print(re.search(pattern, s))
+```
+
+出力結果は同じですが、
+**rをつけた方が読みやすく・安全です。**
+
+---
+
+### 💡 まとめ
+
+| 記号      | 意味                                |
+| ------- | --------------------------------- |
+| `\n`    | 改行（通常の文字列）                        |
+| `r"\n"` | バックスラッシュと n をそのまま扱う（raw文字列）       |
+| `r"\d"` | 数字にマッチする正規表現（Pythonが `\d` を変換しない） |
+
+---
+
+🔸つまり：
+
+> **`r` は「エスケープを無効にして、正規表現をそのまま書けるようにするスイッチ」**
+> ということです。
+---
+
+## 文字列 str1 で、sub() 関数を使用して部分文字列 fox を bear に置き換えます。
+
+### 🐍 Replace a Substring Using `re.sub()`
+
+このコードでは、Python の **正規表現モジュール（`re`）** に含まれる
+`sub()` 関数を使用して、文字列の一部を別の文字列に置き換えます。
+
+#### 🧩 コード例
+
+```python
+import re
+
+# 元の文字列を定義
+str1 = "The quick brown fox jumps over the lazy dog."
+
+# 部分文字列 "fox" を "bear" に置き換える
+new_str = re.sub("fox", "bear", str1)
+
+# 結果を出力
+print(new_str)
+```
+
+#### 🧠 コードの解説
+
+| コード                           | 説明                                                            |
+| ----------------------------- | ------------------------------------------------------------- |
+| `import re`                   | 正規表現を扱う Python の標準ライブラリをインポートします。                             |
+| `str1`                        | 元の文字列。ここでは「The quick brown fox jumps over the lazy dog.」です。   |
+| `re.sub("fox", "bear", str1)` | `"fox"` を `"bear"` に置き換えます。`sub()` は「**substitute（置換）**」の略です。 |
+| `new_str`                     | 置換後の新しい文字列が代入されます。                                            |
+| `print(new_str)`              | 結果を出力します。                                                     |
+
+#### 🧾 出力結果
+
+```
+The quick brown bear jumps over the lazy dog.
+```
+
+---
+
+#### 💡 補足
+
+`re.sub()` の基本構文は次の通りです：
+
+```python
+re.sub(検索パターン, 置換文字列, 対象文字列)
+```
+
+例えば：
+
+```python
+re.sub("cat", "dog", "The cat sleeps.") 
+# → "The dog sleeps."
+```
+
+---
+
+### ✅ まとめ
+
+* `re.sub()` は **文字列の一部を置き換える関数**。
+* 正規表現を使用するため、部分一致や複雑なパターンも扱えます。
+* 今回の例では `"fox"` を `"bear"` に変換しました。
+
+---
+
+## 文字列 str2 で、findall() 関数を使用して woo のすべての出現を検索します。
+
+### 🔍 Find All Occurrences Using `re.findall()`
+
+このコードでは、Python の **正規表現モジュール（`re`）** に含まれる
+`findall()` 関数を使って、文字列内に含まれる `"woo"` のすべての出現箇所を検索します。
+
+#### 🧩 コード例
+
+```python
+import re
+
+# 検索対象の文字列を定義
+str2 = "How much wood would a woodchuck chuck, if a woodchuck could chuck wood?"
+
+# findall() 関数で "woo" のすべての出現を検索
+result = re.findall("woo", str2)
+
+# 結果を出力
+print(result)
+```
+
+#### 🧠 コードの解説
+
+| コード                       | 説明                                        |
+| ------------------------- | ----------------------------------------- |
+| `import re`               | 正規表現（regex）モジュールをインポートします。                |
+| `str2`                    | 検索対象の文字列。                                 |
+| `re.findall("woo", str2)` | `"woo"` という文字列が文中に出てくるすべての箇所をリスト形式で取得します。 |
+| `result`                  | 検索に一致したすべての部分文字列（"woo" のリスト）が格納されます。      |
+| `print(result)`           | 一致した結果を出力します。                             |
+
+#### 🧾 出力結果
+
+```
+['woo', 'woo', 'woo', 'woo']
+```
+
+この出力は、文字列の中で `"woo"` が **4 回** 出現していることを示しています。
+
+---
+
+### ✅ まとめ
+
+* `re.findall()` は **指定したパターンに一致するすべての部分文字列をリストとして返す** 関数。
+* 正規表現を使用できるため、柔軟な検索が可能。
+* 今回の例では `"woo"` のすべての出現箇所を取得しました。
+
+---
+
+📘 **基本構文**
+
+```python
+re.findall(検索パターン, 対象文字列)
+```
+
+例：
+
+```python
+re.findall("cat", "The cat sat on the cathedral.")
+# → ['cat', 'cat']
+```
+
+---
+
+
+
+
+
+
+  
+
+  
+
 
 
 
