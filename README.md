@@ -64,7 +64,7 @@ print(string[0])   # 出力: H
 print(string[1])   # 出力: E
 ```
 
-# name="the bodyGuard"
+### name="the bodyGuard"
 
 ---
 💡 **Tip:**
